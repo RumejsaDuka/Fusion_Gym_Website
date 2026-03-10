@@ -207,94 +207,6 @@
   </div>
 </section>
 
-<!-- ── BMI CALCULATOR ── -->
-{% comment %} <section class="bmi-section">
-  <div class="bmi-inner">
-    <div class="bmi-header">
-      <div class="bmi-label">MJETI YT FALAS</div>
-      <h2 class="bmi-title">KALKULO <span>BMI-NË</span></h2>
-      <p class="bmi-subtitle">Zbulo indeksin tënd të masës trupore dhe mëso ku qëndron shëndeti yt.</p>
-    </div>
-    <div class="bmi-content">
-      <div class="bmi-form-side">
-        <div class="bmi-gender-toggle">
-          <button class="gender-btn active" data-gender="M">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
-              <circle cx="10" cy="14" r="5"/><path d="M19 5l-5.5 5.5M19 5h-4M19 5v4"/>
-            </svg>
-            MASHKULL
-          </button>
-          <button class="gender-btn" data-gender="F">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
-              <circle cx="12" cy="9" r="5"/><path d="M12 14v6M9 17h6"/>
-            </svg>
-            FEMËR
-          </button>
-        </div>
-        <div class="bmi-sliders">
-          <div class="bmi-slider-group">
-            <div class="bmi-slider-label">
-              <span>LARTËSIA</span>
-              <span class="bmi-value" id="heightVal">170 cm</span>
-            </div>
-            <input type="range" class="bmi-range" id="heightSlider" min="140" max="220" value="170">
-          </div>
-          <div class="bmi-slider-group">
-            <div class="bmi-slider-label">
-              <span>PESHA</span>
-              <span class="bmi-value" id="weightVal">70 kg</span>
-            </div>
-            <input type="range" class="bmi-range" id="weightSlider" min="40" max="160" value="70">
-          </div>
-          <div class="bmi-slider-group">
-            <div class="bmi-slider-label">
-              <span>MOSHA</span>
-              <span class="bmi-value" id="ageVal">25 vjeç</span>
-            </div>
-            <input type="range" class="bmi-range" id="ageSlider" min="15" max="70" value="25">
-          </div>
-        </div>
-        <button class="bmi-calc-btn" id="calcBtn">
-          LLOGARIT BMI-NË
-          <i class="bi bi-arrow-right ms-2"></i>
-        </button>
-      </div>
-      <div class="bmi-result-side" id="bmiResult">
-        <div class="bmi-gauge-wrap">
-          <svg class="bmi-gauge-svg" viewBox="0 0 200 120">
-            <path d="M20,110 A90,90 0 0,1 180,110" fill="none" stroke="#1a1a1a" stroke-width="16" stroke-linecap="round"/>
-            <path class="gauge-progress" d="M20,110 A90,90 0 0,1 180,110" fill="none" stroke="#dc3545" stroke-width="16" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283"/>
-            <line class="gauge-needle" x1="100" y1="110" x2="100" y2="30" stroke="#fff" stroke-width="2" stroke-linecap="round" transform-origin="100 110"/>
-            <circle cx="100" cy="110" r="5" fill="#dc3545"/>
-            <text x="14" y="125" fill="#444" font-size="9" font-family="Oswald">Nën</text>
-            <text x="72" y="18" fill="#444" font-size="9" font-family="Oswald">Normal</text>
-            <text x="142" y="52" fill="#444" font-size="9" font-family="Oswald">Mbi</text>
-          </svg>
-          <div class="bmi-number-display">
-            <span class="bmi-big-num" id="bmiNum">--</span>
-            <span class="bmi-unit">BMI</span>
-          </div>
-        </div>
-        <div class="bmi-category">
-          <span class="bmi-cat-label" id="catLabel">Llogarit për të parë rezultatin</span>
-          <div class="bmi-scale">
-            <div class="bmi-scale-item"><div class="scale-bar" style="background:#3b9eff"></div><span>Nënpeshë<br>&lt;18.5</span></div>
-            <div class="bmi-scale-item"><div class="scale-bar" style="background:#2ecc71"></div><span>Normal<br>18.5–24.9</span></div>
-            <div class="bmi-scale-item"><div class="scale-bar" style="background:#f39c12"></div><span>Mbipeshë<br>25–29.9</span></div>
-            <div class="bmi-scale-item"><div class="scale-bar" style="background:#dc3545"></div><span>Obez<br>&gt;30</span></div>
-          </div>
-        </div>
-        <div class="bmi-message" id="bmiMessage" style="display:none">
-          <p id="bmiAdvice"></p>
-          <button class="btn-neon mt-3" style="font-size:12px; padding:12px 28px;" data-bs-toggle="modal" data-bs-target="#registerModal">
-            KONSULTIM FALAS →
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> {% endcomment %}
-
 <!-- ── REVIEWS ── -->
 <section class="reviews-section">
   <div class="reviews-header">
@@ -335,7 +247,7 @@
 <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content bg-dark text-white border-secondary">
-      <form method="POST">
+      <form id="reviewForm" action="{% url 'index' %}" method="POST">
         {% csrf_token %}
         <input type="hidden" name="form_type" value="review">
         <div class="modal-body">
@@ -366,6 +278,7 @@
     </div>
   </div>
 </div>
+
 {% comment %} register modal {% endcomment %}
 <div class="modal fade" id="registerModal" tabindex="-1">
   <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -396,12 +309,12 @@
             <div style="width:40px; height:2px; background:#dc3545; margin-top:12px;"></div>
           </div>
 
-          <form method="POST">
+          <form id="registrationForm" action="{% url 'index' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="form_type" value="regjistrim">
 
             <div class="register-field-group">
-              <label class="register-label">Emri i Plote</label>
+              <label class="register-label">Emri i Plotë</label>
               <input type="text" name="emri" class="form-control register-input" placeholder="Emer Mbiemer" required>
             </div>
 
@@ -435,17 +348,27 @@
   </div>
 </div>
 
-<div class="modal fade" id="successModal" tabindex="-1">
+{% comment %} <div class="modal fade" id="successModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-dark text-white border-danger text-center p-4">
-      <div class="modal-body py-4">
-        <div style="font-size:5rem; color:#dc3545;">✓</div>
-        <h3 class="fw-bold mt-3">Sukses!</h3>
-        <p class="text-secondary mt-2 fs-5" id="successMsg"></p>
-        <button class="btn btn-danger mt-3 px-5" data-bs-dismiss="modal">OK</button>
+    <div class="modal-content success-modal-content">
+      <div class="success-modal-top">
+        <div class="success-icon-wrap">
+          <div class="success-icon-ring"></div>
+          <i class="fas fa-check success-icon"></i>
+        </div>
+      </div>
+      <div class="success-modal-body">
+        <span style="font-size:9px; letter-spacing:5px; color:#dc3545; text-transform:uppercase; font-weight:600;">Fusion Gym</span>
+        <h4 class="text-white fw-bold mt-2 mb-0" style="font-size:1.6rem; letter-spacing:-0.5px;">Regjistrimi u Krye!</h4>
+        <div style="width:30px; height:1px; background:#dc3545; margin:12px auto;"></div>
+        <p id="successMsg" style="font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:1px; line-height:1.8;"></p>
+        <button class="success-modal-btn" data-bs-dismiss="modal">
+          <span>Vazhdo</span>
+          <i class="fas fa-arrow-right ms-2"></i>
+        </button>
       </div>
     </div>
   </div>
-</div>
+</div> {% endcomment %}
 
 {% endblock %}

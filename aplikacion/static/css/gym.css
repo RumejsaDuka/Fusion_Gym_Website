@@ -327,6 +327,91 @@ body, h1, h2, h3, h4, h5, h6, p, span, a {
   border-color: rgba(255, 255, 255, 0.25);
   color: rgba(255, 255, 255, 0.7);
 }
+
+/* ── Success Modal ── */
+.success-modal-content {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(220, 53, 69, 0.08);
+  text-align: center;
+}
+
+.success-modal-top {
+  background: linear-gradient(135deg, #0d0d0d 0%, #111 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 48px 0 40px;
+  position: relative;
+}
+
+.success-modal-top::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 1px;
+  background: linear-gradient(to right, transparent, #dc3545, transparent);
+}
+
+.success-icon-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px; height: 72px;
+}
+
+.success-icon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  animation: successPulse 2s ease-in-out infinite;
+}
+
+.success-icon {
+  font-size: 28px;
+  color: #dc3545;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes successPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.3; }
+  50%       { transform: scale(1.15); opacity: 0.8; }
+}
+
+.success-modal-body {
+  padding: 36px 40px 44px;
+}
+
+.success-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 13px 36px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.success-modal-btn:hover {
+  background: #b02030;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.35);
+}
+
 /* ============================================================
    5. FOOTER — të gjitha faqet
    ============================================================ */

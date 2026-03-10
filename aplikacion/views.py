@@ -7,7 +7,6 @@ from collections import defaultdict
 from django.http import HttpResponse
 from django.db.models import Q
 
-
 def index(request):
     if request.method == "POST":
         form_type = request.POST.get("form_type")
@@ -19,7 +18,7 @@ def index(request):
             rating = int(request.POST.get("rating", 5))
             if emri and komenti:
                 Review.objects.create(emri=emri, komenti=komenti, rating=rating)
-            return redirect("/?success=review")
+            return JsonResponse({'status': 'success'})
 
         # RASTI 2: Regjistrim Anetar
         elif form_type == "regjistrim":
@@ -28,12 +27,13 @@ def index(request):
             paketa = request.POST.get("paketa")
             if emri and telefoni:
                 Anetar.objects.create(
-                    emri=emri,
-                    telefoni=telefoni,
-                    paketa=paketa,
-                    burimi="Regjistrim Pakete"
-                )
-            return redirect("/?success=regjistrim")
+                  emri=emri, telefoni=telefoni,
+                  paketa=paketa, burimi="Regjistrim Pakete"
+        )
+            return JsonResponse({
+        'status': 'success',
+        'msg': f'Faleminderit {emri}! Do ju kontaktojmë në {telefoni}.'  # ← shto msg
+    })
 
     reviews = Review.objects.filter(approved=True).order_by("-data")
     for review in reviews:
@@ -43,7 +43,6 @@ def index(request):
 
     historite = HistoriSuksesi.objects.all()[:3]
     return render(request, "index.html", {"reviews": reviews, "historite": historite})
-
 # Dashboard
 def dashboard_view(request):
     allmembers = Anetar.objects.all().order_by('-data_regjistrimit')
@@ -70,11 +69,36 @@ def krijo_tabelen(oraret_queryset):
     return dict(tabela)
 
 def about(request):
-    # Faqja About tregon historitë e plotë dhe detajet e palestrës
+    if request.method == "POST":
+        emri = request.POST.get("emri")
+        telefoni = request.POST.get("telefoni")
+        paketa = request.POST.get("paketa")
+        if emri and telefoni:
+            Anetar.objects.create(
+                emri=emri,
+                telefoni=telefoni,
+                paketa=paketa,
+                burimi="Regjistrim Pakete"
+            )
+        return JsonResponse({'status': 'success', 'msg': f'Faleminderit {emri}! Do ju kontaktojmë së shpejti.'})
+    
     historite = HistoriSuksesi.objects.all()
     return render(request, 'about.html', {'historite': historite})
 
 def klasat_view(request):
+    if request.method == "POST":
+        emri = request.POST.get("emri")
+        telefoni = request.POST.get("telefoni")
+        paketa = request.POST.get("paketa")
+        if emri and telefoni:
+            Anetar.objects.create(
+                emri=emri,
+                telefoni=telefoni,
+                paketa=paketa,
+                burimi="Regjistrim Pakete"
+            )
+        return JsonResponse({'status': 'success', 'msg': f'Faleminderit {emri}! Do ju kontaktojmë së shpejti.'})
+    
     all_klasat = Klasa.objects.all()
     return render(request, 'Klasat.html', {'all_klasat': all_klasat})
 

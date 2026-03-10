@@ -1,0 +1,45 @@
+{% load static %}
+<nav
+  class="navbar navbar-expand-lg sticky-top border-bottom border-danger border-opacity-25"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+  <img
+    src="{% static 'images/FusionLogo2.png' %}"
+    alt="Fusion Gym Logo"
+    class="brand-logo me-2"
+  />
+  <div class="brand-text d-flex flex-column">
+    <span class="brand-main text-white fw-bold">FUSION</span>
+    <span class="brand-sub text-danger fw-bold">GYM</span>
+  </div>
+</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Kreu</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">RRETH NESH </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'klasat' %}active{% endif %}" href="{% url 'klasat' %}">KLASAT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'oraret' %}active{% endif %}" href="{% url 'oraret' %}">ORARET</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'membership' %}active{% endif %}" href="{% url 'membership' %}">PAKETAT</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="#contact">NA KONTAKTONI </a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,132 @@
+{% load static %}       
+    <footer class="py-5 bg-black border-top border-secondary text-white">
+        <section id="contact" class="contact-section py-5">
+  <div class="container">
+    <div class="contact-box-wrapper row g-0">
+      <div
+        id="contactFormContainer"
+        class="col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center"
+      >
+        <h2 class="text-uppercase fw-bold mb-2">Na Kontaktoni</h2>
+        <p class="text-secondary mb-4 small">
+          Plotësoni formën për të marrë një ofertë të personalizuar.
+        </p>
+
+        <div id="contactFormContent">
+          <form id="contactForm" method="POST" action="/kontakt/">
+            {% csrf_token %}
+            <div class="input-group-modern">
+              <input
+                type="text"
+                name="emri"
+                class="form-control-elite"
+                placeholder=" "
+                required
+              />
+              <label>Emri i Plotë</label>
+              <i class="bi bi-person"></i>
+            </div>
+
+            <div class="input-group-modern">
+              <input
+                type="email"
+                name="email"
+                class="form-control-elite"
+                placeholder=" "
+                required
+              />
+              <label>Email</label>
+              <i class="bi bi-envelope"></i>
+            </div>
+
+            <div class="input-group-modern mb-4">
+              <textarea
+                name="mesazhi"
+                class="form-control-elite"
+                rows="3"
+                placeholder=" "
+                required
+              ></textarea>
+              <label>Mesazhi Juaj</label>
+              <i class="bi bi-chat-dots"></i>
+            </div>
+
+            <button type="submit" class="btn-elite-submit">
+              <span>DËRGO MESAZHIN</span>
+              <i class="bi bi-send-fill"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div id="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.266564342907!2d19.809519075875333!3d41.32481657130786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13503106ce23ca25%3A0xefa6e52c8c15678f!2sRruga%20Myslym%20Shyri%2C%20Tiran%C3%AB%2C%20Shqip%C3%ABria!5e0!3m2!1ssq!2s!4v1771275417582!5m2!1ssq!2s"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container mt-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <h5 class="text-uppercase fw-bold mb-4 border-bottom border-secondary pb-2">Fusion <span class="text-danger">Gym</span></h5>
+            <ul class="list-unstyled mb-4">
+                <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-danger"></i> Te Brylli, Tiranë</li>
+                <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-danger"></i> +355 68 49 393</li>
+                <li class="mb-2"><i class="bi bi-envelope-fill me-2 text-danger"></i> info@fusiongym.al</li>
+            </ul>
+            <div class="d-flex gap-3">
+                <a href="#" class="text-white fs-5 social-hover"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white fs-5 social-hover"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white fs-5 social-hover"><i class="bi bi-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <h5 class="text-uppercase fw-bold mb-4 border-bottom border-secondary pb-2">Orari i Punës</h5>
+            <p class="mb-1 text-secondary small">Hënë - Shtunë: <span class="text-white">06:00 - 23:00</span></p>
+            <p class="mb-1 text-secondary small">Dielë: <span class="text-white">09:00 - 20:00</span></p>
+        </div>
+
+        <div class="col-md-5">
+            <h5 class="text-uppercase fw-bold mb-4 border-bottom border-secondary pb-2">Politika e Privatësisë</h5>
+            <p class="text-secondary mb-0" style="font-size: 0.75rem; text-align: justify; line-height: 1.5;">
+                Fusion Gym sqaron se dhënia e të dhënave tuaja personale nuk është e detyrueshme dhe është në dëshirën e çdo subjekti 
+                për të dhënë vullnetarisht informacionin e kërkuar. Të dhënat do të ruhen dhe përpunohen në përputhje me 
+                legjislacionin në fuqi, konkretisht sipas <span class="text-light">Ligjit Nr. 9887, datë 10.03.2008 "Për Mbrojtjen e të Dhënave Personale"</span>.
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <p class="small opacity-50 mb-0">© 2026 Fusion Gym. Të gjitha të drejtat të rezervuara.</p>
+        </div>
+    </div>
+</div>
+
+  <!-- Modal Suksesi - Kontakti -->
+  <div class="modal fade" id="contactSuccessModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-danger text-center p-4">
+        <div class="modal-body py-4">
+          <div style="font-size:5rem; color:#dc3545;">✓</div>
+          <h3 class="fw-bold mt-3">Sukses!</h3>
+          <p class="text-secondary mt-2 fs-5">Mesazhi u dërgua! Do t'ju kontaktojmë së shpejti.</p>
+          <button class="btn btn-danger mt-3 px-5" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>

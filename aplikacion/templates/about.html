@@ -1,0 +1,260 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About Us | Fusion Gym{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-eyebrow"><span>Rreth Nesh</span></div>
+  <h1 class="page-header-title">Më Shumë<br><em>se një Palestër</em></h1>
+  <div class="page-header-line"></div>
+  <p class="page-header-sub">Një mentalitet. Një komunitet. Një transformim i vërtetë.</p>
+</div>
+
+<!-- HISTORIA -->
+<section class="sp-section">
+  <div class="sp-grid-2">
+    <div>
+      <p class="sp-body">Themeluar në vitin 2014, Fusion Gym lindi nga një vizion i thjeshtë por i fuqishëm: të krijonim një hapësirë ku çdo person — pavarësisht nivelit, moshës apo qëllimit — të ndihet i aftë të ndryshojë.</p>
+      <p class="sp-body">Ajo që nisi si një sallë modeste me pak pajisje dhe shumë pasion, sot është shndërruar në qendrën kryesore të transformimit fizik dhe mental në rajon — me mbi 500 anëtarë aktivë dhe 7 trajnerë të certifikuar ndërkombëtarisht.</p>
+      <p class="sp-body">Çdo metër katror i kësaj palestine flet për filozofinë tonë: fitnesit i duhet qasje njerëzore. Jo vetëm makina dhe peshë — por edukim, disiplinë, motivim dhe një komunitet që të shtyn përpara edhe ditët kur ti nuk dëshiron.</p>
+
+      <div style="display:flex; gap:2px; margin-top:36px;">
+        <div style="flex:1; background:#080808; border:1px solid #1a1a1a; border-top:2px solid #dc3545; padding:24px 20px;">
+          <span style="font-size:10px; letter-spacing:4px; color:#dc3545; font-family:'Oswald',sans-serif; display:block; margin-bottom:10px;">FILOZOFIA</span>
+          <p style="font-size:13px; color:rgba(255,255,255,0.3); font-family:'Oswald',sans-serif; font-weight:300; line-height:1.8; margin:0;">"Nuk e ndërtojmë vetëm trupin — ndërtojmë karakterin. Çdo stërvitje është një provë e vullnetit tënd."</p>
+        </div>
+        <div style="flex:1; background:#080808; border:1px solid #1a1a1a; border-top:2px solid #111; padding:24px 20px;">
+          <span style="font-size:10px; letter-spacing:4px; color:#dc3545; font-family:'Oswald',sans-serif; display:block; margin-bottom:10px;">VLERAT</span>
+          <p style="font-size:13px; color:rgba(255,255,255,0.3); font-family:'Oswald',sans-serif; font-weight:300; line-height:1.8; margin:0;">Disiplinë. Konsistencë. Komunitet. Këto tre fjalë janë themeli i çdo gjëje që bëjmë — nga dizajni i sallës deri tek programet tona.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sp-mission-box">
+        <div class="sp-mission-label">Misioni &amp; Vizioni</div>
+        <p class="sp-mission-text">Misioni ynë është të demokratizojmë fitnesin — ta bëjmë të arritshëm, efektiv dhe motivues për çdo person që hyn nëpër dyert tona. Nuk besojmë në zgjidhje të shpejta; besojmë në ndryshime të qëndrueshme të jetës.</p>
+        <p class="sp-mission-text">Vizioni ynë është të jemi jo vetëm palestër — por qendra e shëndetit dhe komunitetit, ku njerëzit vijnë jo sepse duhet, por sepse duan.</p>
+        <button class="fg-btn-outline" data-bs-toggle="modal" data-bs-target="#registerModal">Fillo Tani →</button>
+      </div>
+
+      <div class="sp-counters">
+        <div class="sp-counter">
+          <span class="sp-counter-n">10<sup>+</sup></span>
+          <span class="sp-counter-l">Vite Eksperiencë</span>
+        </div>
+        <div class="sp-counter">
+          <span class="sp-counter-n">500<sup>+</sup></span>
+          <span class="sp-counter-l">Transformime</span>
+        </div>
+        <div class="sp-counter">
+          <span class="sp-counter-n">7</span>
+          <span class="sp-counter-l">Trajnerë Elitë</span>
+        </div>
+        <div class="sp-counter">
+          <span class="sp-counter-n">24/7</span>
+          <span class="sp-counter-l">Akses i Plotë</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAJNERËT -->
+<section class="sp-section sp-section-alt">
+  <div class="sp-label"><span>Skuadra Jonë</span></div>
+  <h2 class="sp-heading">Trajnerët <em>Elitë</em></h2>
+  <div class="sp-trainers-grid">
+    <div class="sp-trainer">
+      <div class="sp-trainer-img">
+        <img src="{% static 'images/trainer1.jpg' %}" alt="Ardit Mera">
+        <div class="sp-trainer-info">
+          <div class="sp-trainer-spec">Bodybuilding &amp; Nutrition · IFBB Elite</div>
+          <h3 class="sp-trainer-name">Ardit Mera</h3>
+          <span class="sp-trainer-quote">"Disiplina rreh talentin çdo ditë."</span>
+        </div>
+      </div>
+    </div>
+    <div class="sp-trainer">
+      <div class="sp-trainer-img">
+        <img src="{% static 'images/trainer2.jpg' %}" alt="Sara Deda">
+        <div class="sp-trainer-info">
+          <div class="sp-trainer-spec">Yoga &amp; Mobility · MSc Sport Science</div>
+          <h3 class="sp-trainer-name">Sara Deda</h3>
+          <span class="sp-trainer-quote">"Gjej qetësinë në lëvizje."</span>
+        </div>
+      </div>
+    </div>
+    <div class="sp-trainer">
+      <div class="sp-trainer-img">
+        <img src="{% static 'images/trainer4.jpg' %}" alt="Kledi Rama">
+        <div class="sp-trainer-info">
+          <div class="sp-trainer-spec">Crossfit &amp; HIIT · CF Level 2</div>
+          <h3 class="sp-trainer-name">Kledi Rama</h3>
+          <span class="sp-trainer-quote">"Më i fortë se dje."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="sp-section">
+  <div class="sp-label"><span>Ambientet Tona</span></div>
+  <h2 class="sp-heading">Shiko <em>Hapësirën</em></h2>
+  <div class="sp-mosaic">
+    <div class="sp-mc-cell sp-mc-a" data-src="{% static 'images/place1.png' %}" data-idx="0">
+      <img src="{% static 'images/place1.png' %}" alt=""><span class="sp-mc-num">01</span>
+    </div>
+    <div class="sp-mc-cell sp-mc-b" data-src="{% static 'images/background2.png' %}" data-idx="1">
+      <img src="{% static 'images/background2.png' %}" alt=""><span class="sp-mc-num">02</span>
+    </div>
+    <div class="sp-mc-cell sp-mc-c" data-src="{% static 'images/gym4.jpg' %}" data-idx="2">
+      <img src="{% static 'images/gym4.jpg' %}" alt=""><span class="sp-mc-num">03</span>
+    </div>
+    <div class="sp-mc-cell sp-mc-d" data-src="{% static 'images/gym5.jpg' %}" data-idx="3">
+      <img src="{% static 'images/gym5.jpg' %}" alt=""><span class="sp-mc-num">04</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- TRANSFORMIMET -->
+<section class="sp-section sp-section-alt">
+  <div class="sp-label"><span>Rezultate Reale</span></div>
+  <h2 class="sp-heading">Transformimet <em>Tona</em></h2>
+  <div class="sp-transforms-grid">
+    {% for histori in historite %}
+    <div class="sp-transform-card">
+      <div class="sp-transform-imgs">
+        <div class="sp-transform-half">
+          <img src="{{ histori.foto_para.url }}" alt="Para">
+          <span class="sp-transform-label">Para</span>
+        </div>
+        <div class="sp-transform-divider"></div>
+        <div class="sp-transform-half">
+          <img src="{{ histori.foto_pas.url }}" alt="Pas">
+          <span class="sp-transform-label sp-transform-label-r">Pas</span>
+        </div>
+      </div>
+      <div class="sp-transform-foot">
+        <h5>{{ histori.emri }}</h5>
+        <p>{{ histori.pershkrimi_shkurter }}</p>
+      </div>
+    </div>
+    {% empty %}
+    <p style="color:rgba(255,255,255,0.2); font-family:'Oswald',sans-serif; font-size:13px;">Ende nuk ka transformime.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sp-section">
+  <div class="sp-faq-grid">
+    <div class="sp-faq-intro">
+      <div class="sp-label"><span>FAQ</span></div>
+      <h2 class="sp-heading">Pyetjet<br><em>Shpeshta</em></h2>
+      <p>Gjithçka që duhet të dini përpara se të filloni rrugëtimin tuaj.</p>
+      <button class="fg-btn" data-bs-toggle="modal" data-bs-target="#registerModal">
+        Fillo Sot
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 7h12M7 1l6 6-6 6" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <div>
+      <div class="sp-faq-item">
+        <button class="sp-faq-q" data-fid="sfq1"><span>Cilat janë oraret e hapjes?</span><div class="sp-faq-icon"></div></button>
+        <div class="sp-faq-a" id="sfq1"><p>E hënë–Shtunë: 06:00–23:00. &nbsp;E dielë: 09:00–20:00.</p></div>
+      </div>
+      <div class="sp-faq-item">
+        <button class="sp-faq-q" data-fid="sfq2"><span>A ofroni plane ushqimore?</span><div class="sp-faq-icon"></div></button>
+        <div class="sp-faq-a" id="sfq2"><p>Po — trajnerët tanë hartojnë plane nutricionale të personalizuara sipas qëllimeve tuaja.</p></div>
+      </div>
+      <div class="sp-faq-item">
+        <button class="sp-faq-q" data-fid="sfq3"><span>A duhet rezervim për klasat e grupit?</span><div class="sp-faq-icon"></div></button>
+        <div class="sp-faq-a" id="sfq3"><p>Rekomandojmë rezervimin 24 orë përpara — direkt në recepsion ose me telefon.</p></div>
+      </div>
+      <div class="sp-faq-item">
+        <button class="sp-faq-q" data-fid="sfq4"><span>A ka muaj prove për anëtarët e rinj?</span><div class="sp-faq-icon"></div></button>
+        <div class="sp-faq-a" id="sfq4"><p>Çdo anëtar i ri ka të drejtën e një seance prove falas me trajner.</p></div>
+      </div>
+      <div class="sp-faq-item">
+        <button class="sp-faq-q" data-fid="sfq5"><span>Çfarë duhet të kem me vete ditën e parë?</span><div class="sp-faq-icon"></div></button>
+        <div class="sp-faq-a" id="sfq5"><p>Veshje komode, këpucë të pastra dhe vullnet. Ne kujdesemi për pjesën tjetër.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% comment %} register modal {% endcomment %}
+<div class="modal fade" id="registerModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content register-modal-content">
+
+      <button class="btn-close-custom" data-bs-dismiss="modal">×</button>
+
+      <div class="row g-0 h-100">
+
+        <!-- E MAJTA — Imazhi -->
+        <div class="col-lg-5 d-none d-lg-block register-modal-img">
+          <div class="register-modal-img-overlay"></div>
+          <div class="register-modal-img-bottom">
+            <span class="badge bg-danger px-3 py-2 mb-3 d-block" style="width:fit-content; letter-spacing:3px; font-size:10px;">FUSION ELITE</span>
+            <h2 class="text-white fw-bold text-uppercase m-0" style="font-size:3rem; line-height:0.9; letter-spacing:-1px;">
+              Fillo<br><span style="color:transparent; -webkit-text-stroke: 1px rgba(220,53,69,0.8);">Sot</span>
+            </h2>
+            <p class="mt-3" style="font-size:11px; letter-spacing:3px; color:rgba(255,255,255,0.3); text-transform:uppercase;">Zgjidh paketën tënde</p>
+          </div>
+        </div>
+
+        <!-- E DJATHTA — Forma -->
+        <div class="col-lg-7 register-modal-form">
+
+          <div class="mb-5">
+            <span style="font-size:10px; letter-spacing:5px; color:#dc3545; text-transform:uppercase; font-weight:600;">Fusion Gym</span>
+            <h4 class="text-white fw-bold mt-2 mb-0" style="font-size:1.8rem; letter-spacing:-0.5px;">Regjistrohu Tani</h4>
+            <div style="width:40px; height:2px; background:#dc3545; margin-top:12px;"></div>
+          </div>
+
+          <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="regjistrim">
+
+            <div class="register-field-group">
+              <label class="register-label">Emri i Plote</label>
+              <input type="text" name="emri" class="form-control register-input" placeholder="Emer Mbiemer" required>
+            </div>
+
+            <div class="register-field-group">
+              <label class="register-label">Telefoni</label>
+              <input type="text" name="telefoni" class="form-control register-input" placeholder="+355 6X XXX XXXX" required>
+            </div>
+
+            <div class="register-field-group">
+              <label class="register-label">Paketa</label>
+              <select name="paketa" class="form-select register-input">
+                <option value="Basic">Basic</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
+              </select>
+            </div>
+
+            <div class="d-flex gap-3 mt-5">
+              <button type="submit" class="register-submit-btn flex-grow-1">
+                <span>Regjistrohu</span>
+                <i class="fas fa-arrow-right ms-2"></i>
+              </button>
+              <button type="button" class="register-cancel-btn" data-bs-dismiss="modal">Mbyll</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

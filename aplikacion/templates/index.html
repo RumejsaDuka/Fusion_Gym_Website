@@ -1,0 +1,451 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- HERO -->
+<header class="hero-creative">
+  <div class="hero-inner">
+    <div class="hero-text-side">
+      <div>
+        <h2 class="outline-text animate-text" style="animation-delay:0.1s">EVOLVE</h2>
+        <h1 class="main-title animate-text" style="animation-delay:0.3s">
+          FUSION <span class="neon-text">GYM</span>
+        </h1>
+        <p class="hero-desc animate-text" style="animation-delay:0.5s">
+          Aty ku disiplina takon forcën.<br>
+          Ndërto versionin tënd më të pathyeshëm.
+        </p>
+        <div class="hero-meta animate-text" style="animation-delay:0.65s">
+          <span class="hero-meta-item"><span class="hero-meta-dot"></span>500+ Anëtarë</span>
+          <span class="hero-meta-item"><span class="hero-meta-dot"></span>7 Trajnerë</span>
+          <span class="hero-meta-item"><span class="hero-meta-dot"></span>24/7 Akses</span>
+        </div>
+        <button class="btn-neon animate-text" style="animation-delay:0.8s"
+          data-bs-toggle="modal" data-bs-target="#registerModal">
+          REGJISTROHU TANI
+        </button>
+      </div>
+    </div>
+    <div class="hero-image-side">
+      <div class="image-mask">
+        <img src="{% static 'images/gym5.jpg' %}" alt="Fusion Gym">
+      </div>
+      <div class="bg-tag">GYM</div>
+      <div class="hero-ticker">
+        <span>FORCE &nbsp;·&nbsp; DISIPLINË &nbsp;·&nbsp; TRANSFORMIM &nbsp;·&nbsp;
+               FORCE &nbsp;·&nbsp; DISIPLINË &nbsp;·&nbsp; TRANSFORMIM &nbsp;·&nbsp;
+               FORCE &nbsp;·&nbsp; DISIPLINË &nbsp;·&nbsp; TRANSFORMIM &nbsp;·&nbsp;</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-socials">
+    <a href="#"><i class="bi bi-instagram"></i></a>
+    <a href="#"><i class="bi bi-facebook"></i></a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</header>
+
+<!-- ── WELCOME ── -->
+<section class="sp-section">
+  <div class="sp-grid-2">
+    <div>
+      <div class="sp-label"><span>Historia Jonë</span></div>
+      <h2 class="sp-heading">Fusion Gym<br><em>Më Shumë se Palestër</em></h2>
+      <p class="sp-body">Themeluar në vitin 2014, Fusion Gym lindi nga një vizion i thjeshtë: të krijonim një hapësirë ku çdo person — pavarësisht nivelit — të ndihet i aftë të ndryshojë.</p>
+      <p class="sp-body">Sot jemi qendra kryesore e transformimit fizik dhe mental në rajon, me mbi 500 anëtarë aktivë dhe 7 trajnerë të certifikuar ndërkombëtarisht.</p>
+      <a href="{% url 'about' %}" class="fg-btn-outline" style="display:inline-flex; align-items:center; gap:10px; margin-top:24px; text-decoration:none;">
+        Mëso Më Shumë →
+      </a>
+    </div>
+    <div>
+      <div class="sp-counters">
+        <div class="sp-counter">
+          <span class="sp-counter-n">10<sup>+</sup></span>
+          <span class="sp-counter-l">Vite Eksperiencë</span>
+        </div>
+        <div class="sp-counter">
+          <span class="sp-counter-n">500<sup>+</sup></span>
+          <span class="sp-counter-l">Transformime</span>
+        </div>
+        <div class="sp-counter">
+          <span class="sp-counter-n">7</span>
+          <span class="sp-counter-l">Trajnerë Elitë</span>
+        </div>
+        <div class="sp-counter">
+          <span class="sp-counter-n">24/7</span>
+          <span class="sp-counter-l">Akses i Plotë</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PSE FUSION ── -->
+<section class="why-fusion-section">
+  <div class="why-header">
+    <div class="why-label">PSE NE</div>
+    <h2 class="why-title">Pse <span>Fusion</span></h2>
+    <div class="why-line"></div>
+  </div>
+  <div class="why-cards-wrapper">
+    <div class="why-card">
+      <div class="why-card-glow"></div>
+      <div class="why-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M6.5 6.5h11M6.5 12h11M6.5 17.5h6"/>
+          <rect x="2" y="3" width="20" height="18" rx="2"/>
+        </svg>
+      </div>
+      <span class="why-card-num">01</span>
+      <div class="why-card-content">
+        <h3>Trajnerë të Certifikuar</h3>
+        <p>7 trajnerë me certifikime ndërkombëtare — nga bodybuilding deri tek yoga dhe crossfit. Çdo plan është i personalizuar për ty.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-glow"></div>
+      <div class="why-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+      </div>
+      <span class="why-card-num">02</span>
+      <div class="why-card-content">
+        <h3>Akses 24/7</h3>
+        <p>Stërvitu kur të duash. Dyert tona janë hapur çdo ditë, çdo orë — sepse disiplina nuk njeh orar.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-glow"></div>
+      <div class="why-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <span class="why-card-num">03</span>
+      <div class="why-card-content">
+        <h3>Komunitet i Vërtetë</h3>
+        <p>Mbi 500 anëtarë që motivojnë njëri-tjetrin. Këtu nuk je vetëm — je pjesë e diçkaje më të madhe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KLASAT PREVIEW ── -->
+<section class="sp-section sp-section-alt">
+  <div class="sp-label"><span>Çfarë Ofrojmë</span></div>
+  <h2 class="sp-heading">Klasat <em>Tona</em></h2>
+  <div class="idx-classes-grid">
+    <div class="idx-class-item">
+      <div class="idx-class-img">
+        <img src="{% static 'images/bb.jpg' %}" alt="Bodybuilding">
+        <div class="idx-class-overlay"></div>
+      </div>
+      <div class="idx-class-info">
+        <span class="idx-class-tag">FORCË</span>
+        <h3>Bodybuilding</h3>
+        <p>Program i strukturuar për masë muskulore dhe forcë maksimale.</p>
+      </div>
+    </div>
+    <div class="idx-class-item">
+      <div class="idx-class-img">
+        <img src="{% static 'images/gym4.jpg' %}" alt="Crossfit">
+        <div class="idx-class-overlay"></div>
+      </div>
+      <div class="idx-class-info">
+        <span class="idx-class-tag">INTENSITET</span>
+        <h3>Crossfit</h3>
+        <p>Stërvitje funksionale me intensitet të lartë — djeg kalori, ndërto rezistencë.</p>
+      </div>
+    </div>
+    <div class="idx-class-item">
+      <div class="idx-class-img">
+        <img src="{% static 'images/pilates1.webp' %}" alt="Yoga">
+        <div class="idx-class-overlay"></div>
+      </div>
+      <div class="idx-class-info">
+        <span class="idx-class-tag">LËVIZSHMËRI</span>
+        <h3>Yoga & Mobility</h3>
+        <p>Ekuilibri mes forcës dhe qetësisë — trupi dhe mendja në harmoni.</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:40px;">
+    <a href="{% url 'klasat' %}" class="fg-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:12px;">
+      Të Gjitha Klasat
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M1 7h12M7 1l6 6-6 6" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner">
+  <div class="cta-bg-text">FUSION</div>
+  <div class="cta-stripe"></div>
+  <div class="cta-inner">
+    <div class="cta-left">
+      <span class="cta-label">GATI PËR NDRYSHIM?</span>
+      <h2 class="cta-title">Fillo<br><span>Sot</span></h2>
+    </div>
+    <div class="cta-divider"></div>
+    <div class="cta-right">
+      <p class="cta-text">Seanca e parë është <strong>falas</strong>. Një trajner personal do të vlerësojë nivelin tënd dhe do të hartojë planin e duhur — pa asnjë angazhim.</p>
+      <div class="cta-actions">
+        <button class="btn-neon" data-bs-toggle="modal" data-bs-target="#registerModal">
+          REGJISTROHU FALAS
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BMI CALCULATOR ── -->
+{% comment %} <section class="bmi-section">
+  <div class="bmi-inner">
+    <div class="bmi-header">
+      <div class="bmi-label">MJETI YT FALAS</div>
+      <h2 class="bmi-title">KALKULO <span>BMI-NË</span></h2>
+      <p class="bmi-subtitle">Zbulo indeksin tënd të masës trupore dhe mëso ku qëndron shëndeti yt.</p>
+    </div>
+    <div class="bmi-content">
+      <div class="bmi-form-side">
+        <div class="bmi-gender-toggle">
+          <button class="gender-btn active" data-gender="M">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+              <circle cx="10" cy="14" r="5"/><path d="M19 5l-5.5 5.5M19 5h-4M19 5v4"/>
+            </svg>
+            MASHKULL
+          </button>
+          <button class="gender-btn" data-gender="F">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+              <circle cx="12" cy="9" r="5"/><path d="M12 14v6M9 17h6"/>
+            </svg>
+            FEMËR
+          </button>
+        </div>
+        <div class="bmi-sliders">
+          <div class="bmi-slider-group">
+            <div class="bmi-slider-label">
+              <span>LARTËSIA</span>
+              <span class="bmi-value" id="heightVal">170 cm</span>
+            </div>
+            <input type="range" class="bmi-range" id="heightSlider" min="140" max="220" value="170">
+          </div>
+          <div class="bmi-slider-group">
+            <div class="bmi-slider-label">
+              <span>PESHA</span>
+              <span class="bmi-value" id="weightVal">70 kg</span>
+            </div>
+            <input type="range" class="bmi-range" id="weightSlider" min="40" max="160" value="70">
+          </div>
+          <div class="bmi-slider-group">
+            <div class="bmi-slider-label">
+              <span>MOSHA</span>
+              <span class="bmi-value" id="ageVal">25 vjeç</span>
+            </div>
+            <input type="range" class="bmi-range" id="ageSlider" min="15" max="70" value="25">
+          </div>
+        </div>
+        <button class="bmi-calc-btn" id="calcBtn">
+          LLOGARIT BMI-NË
+          <i class="bi bi-arrow-right ms-2"></i>
+        </button>
+      </div>
+      <div class="bmi-result-side" id="bmiResult">
+        <div class="bmi-gauge-wrap">
+          <svg class="bmi-gauge-svg" viewBox="0 0 200 120">
+            <path d="M20,110 A90,90 0 0,1 180,110" fill="none" stroke="#1a1a1a" stroke-width="16" stroke-linecap="round"/>
+            <path class="gauge-progress" d="M20,110 A90,90 0 0,1 180,110" fill="none" stroke="#dc3545" stroke-width="16" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283"/>
+            <line class="gauge-needle" x1="100" y1="110" x2="100" y2="30" stroke="#fff" stroke-width="2" stroke-linecap="round" transform-origin="100 110"/>
+            <circle cx="100" cy="110" r="5" fill="#dc3545"/>
+            <text x="14" y="125" fill="#444" font-size="9" font-family="Oswald">Nën</text>
+            <text x="72" y="18" fill="#444" font-size="9" font-family="Oswald">Normal</text>
+            <text x="142" y="52" fill="#444" font-size="9" font-family="Oswald">Mbi</text>
+          </svg>
+          <div class="bmi-number-display">
+            <span class="bmi-big-num" id="bmiNum">--</span>
+            <span class="bmi-unit">BMI</span>
+          </div>
+        </div>
+        <div class="bmi-category">
+          <span class="bmi-cat-label" id="catLabel">Llogarit për të parë rezultatin</span>
+          <div class="bmi-scale">
+            <div class="bmi-scale-item"><div class="scale-bar" style="background:#3b9eff"></div><span>Nënpeshë<br>&lt;18.5</span></div>
+            <div class="bmi-scale-item"><div class="scale-bar" style="background:#2ecc71"></div><span>Normal<br>18.5–24.9</span></div>
+            <div class="bmi-scale-item"><div class="scale-bar" style="background:#f39c12"></div><span>Mbipeshë<br>25–29.9</span></div>
+            <div class="bmi-scale-item"><div class="scale-bar" style="background:#dc3545"></div><span>Obez<br>&gt;30</span></div>
+          </div>
+        </div>
+        <div class="bmi-message" id="bmiMessage" style="display:none">
+          <p id="bmiAdvice"></p>
+          <button class="btn-neon mt-3" style="font-size:12px; padding:12px 28px;" data-bs-toggle="modal" data-bs-target="#registerModal">
+            KONSULTIM FALAS →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+
+<!-- ── REVIEWS ── -->
+<section class="reviews-section">
+  <div class="reviews-header">
+    <div class="reviews-label">ÇFARË THONË</div>
+    <h2 class="reviews-title">KLIENTËT <span>TANË</span></h2>
+    <div class="why-line" style="margin:20px auto 0;"></div>
+  </div>
+  <div class="reviews-track-wrapper">
+    <div class="reviews-track">
+      {% for review in reviews %}
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <p class="review-text">{{ review.komenti }}</p>
+        <div class="review-footer">
+          <div class="review-author">
+            <div class="review-avatar">{{ review.emri|slice:":1" }}</div>
+            <span>{{ review.emri }}</span>
+          </div>
+          <div class="review-stars">
+            {% for star in review.stars %}<span class="star-filled">★</span>{% endfor %}
+            {% for empty in review.empty_stars %}<span class="star-empty">★</span>{% endfor %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-secondary text-center w-100 py-5">Ende nuk ka review të aprovuara.</p>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="reviews-action">
+    <button class="btn-review-custom" data-bs-toggle="modal" data-bs-target="#reviewModal">
+      <i class="bi bi-pencil me-2"></i> LINI REVIEW-N TUAJ
+    </button>
+  </div>
+</section>
+
+<!-- MODALET -->
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white border-secondary">
+      <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form_type" value="review">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Emri juaj</label>
+            <input type="text" name="emri" class="form-control bg-secondary text-white border-0" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Komenti</label>
+            <textarea name="komenti" class="form-control bg-secondary text-white border-0" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Vlerësimi (1-5)</label>
+            <select name="rating" class="form-select">
+              <option value="5">5 ★ (Shkëlqyeshëm)</option>
+              <option value="4">4 ★ (Shumë mirë)</option>
+              <option value="3">3 ★ (Mirë)</option>
+              <option value="2">2 ★ (Mjaftueshëm)</option>
+              <option value="1">1 ★ (Dobët)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Anulo</button>
+          <button type="submit" class="btn btn-danger">Dërgo Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% comment %} register modal {% endcomment %}
+<div class="modal fade" id="registerModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content register-modal-content">
+
+      <button class="btn-close-custom" data-bs-dismiss="modal">×</button>
+
+      <div class="row g-0 h-100">
+
+        <!-- E MAJTA — Imazhi -->
+        <div class="col-lg-5 d-none d-lg-block register-modal-img">
+          <div class="register-modal-img-overlay"></div>
+          <div class="register-modal-img-bottom">
+            <span class="badge bg-danger px-3 py-2 mb-3 d-block" style="width:fit-content; letter-spacing:3px; font-size:10px;">FUSION ELITE</span>
+            <h2 class="text-white fw-bold text-uppercase m-0" style="font-size:3rem; line-height:0.9; letter-spacing:-1px;">
+              Fillo<br><span style="color:transparent; -webkit-text-stroke: 1px rgba(220,53,69,0.8);">Sot</span>
+            </h2>
+            <p class="mt-3" style="font-size:11px; letter-spacing:3px; color:rgba(255,255,255,0.3); text-transform:uppercase;">Zgjidh paketën tënde</p>
+          </div>
+        </div>
+
+        <!-- E DJATHTA — Forma -->
+        <div class="col-lg-7 register-modal-form">
+
+          <div class="mb-5">
+            <span style="font-size:10px; letter-spacing:5px; color:#dc3545; text-transform:uppercase; font-weight:600;">Fusion Gym</span>
+            <h4 class="text-white fw-bold mt-2 mb-0" style="font-size:1.8rem; letter-spacing:-0.5px;">Regjistrohu Tani</h4>
+            <div style="width:40px; height:2px; background:#dc3545; margin-top:12px;"></div>
+          </div>
+
+          <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="regjistrim">
+
+            <div class="register-field-group">
+              <label class="register-label">Emri i Plote</label>
+              <input type="text" name="emri" class="form-control register-input" placeholder="Emer Mbiemer" required>
+            </div>
+
+            <div class="register-field-group">
+              <label class="register-label">Telefoni</label>
+              <input type="text" name="telefoni" class="form-control register-input" placeholder="+355 6X XXX XXXX" required>
+            </div>
+
+            <div class="register-field-group">
+              <label class="register-label">Paketa</label>
+              <select name="paketa" class="form-select register-input">
+                <option value="Basic">Basic</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
+              </select>
+            </div>
+
+            <div class="d-flex gap-3 mt-5">
+              <button type="submit" class="register-submit-btn flex-grow-1">
+                <span>Regjistrohu</span>
+                <i class="fas fa-arrow-right ms-2"></i>
+              </button>
+              <button type="button" class="register-cancel-btn" data-bs-dismiss="modal">Mbyll</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-danger text-center p-4">
+      <div class="modal-body py-4">
+        <div style="font-size:5rem; color:#dc3545;">✓</div>
+        <h3 class="fw-bold mt-3">Sukses!</h3>
+        <p class="text-secondary mt-2 fs-5" id="successMsg"></p>
+        <button class="btn btn-danger mt-3 px-5" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block title %}Schedules | Fusion Gym{% endblock %} 
+{% block content %}
+
+<div class="page-header" data-title="ORARET">
+  <div class="fg-wrap" >
+    <div class="page-header-eyebrow"><span>Oraret</span></div>
+    <h1 class="page-header-title">Orari i<br><em>Klasave</em></h1>
+    <p class="page-header-sub">Gjej klasën e duhur në orarin që të përshtatet.</p>
+  </div>
+</div>
+
+<section class="schedule-section py-5">
+    <div class="container-fluid px-4">
+        <h2 class="text-center text-white fw-bold mb-5 text-uppercase">Orari i <span class="text-danger">Klasave</span></h2>
+        
+        <div class="table-responsive shadow-lg">
+            <table class="fusion-gym-table">
+                <thead>
+                    <tr class="main-red-header">
+                        <th class="salla-label">SALLA</th> <th class="time-header">ORARI</th>
+                        {% for dita in ditet_display %}
+                            <th>{{ dita }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                
+                {% for salla, rreshtat in tabela_per_sallat.items %}
+                <tbody>
+                    {% for rresht in rreshtat %}
+                    <tr>
+                        {% if forloop.first %}
+                        <td rowspan="{{ rreshtat|length }}" class="vertical-room-text">
+                            <div>{{ salla|upper }}</div>
+                        </td>
+                        {% endif %}
+                        
+                        <td class="time-cell">{{ rresht.ora }}</td>
+                        
+                        {% for emri_klases in rresht.klasat %}
+                        <td class="class-cell">
+                            {% if emri_klases %}
+                                <div class="class-box-item">{{ emri_klases }}</div>
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    <tr class="spacer-row"><td colspan="8"></td></tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

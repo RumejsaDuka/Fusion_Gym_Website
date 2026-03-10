@@ -150,3 +150,24 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('#registerModal form, #planModal form, #reviewModal form, #contactForm').forEach(handleFormSubmit);
 
 });
+
+
+// FAQ //
+
+document.querySelectorAll('.sp-faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const id = this.getAttribute('data-fid');
+    const answer = document.getElementById(id);
+    const isOpen = answer.classList.contains('open');
+
+    // Mbyll të gjitha
+    document.querySelectorAll('.sp-faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.sp-faq-q').forEach(b => b.classList.remove('active'));
+
+    // Hap vetëm këtë nëse nuk ishte hapur
+    if (!isOpen) {
+      answer.classList.add('open');
+      this.classList.add('active');
+    }
+  });
+});

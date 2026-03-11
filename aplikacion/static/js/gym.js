@@ -1,5 +1,17 @@
 /* ============================================================
-   PLAN NAME UPDATE — jashtë DOMContentLoaded
+   FUSION GYM — gym.js
+   ============================================================
+   1. updatePlanName   → membership.html onclick
+   2. showSuccessModal → helper global
+   3. Universal Form Handler → të gjitha format
+   4. FAQ accordion
+   5. Navbar scroll effect
+   ============================================================ */
+
+
+/* ============================================================
+   1. PLAN NAME UPDATE
+   (thirret nga onclick në membership.html)
    ============================================================ */
 function updatePlanName(title) {
   const badge = document.querySelector('#planModal .text-danger.fw-bold');
@@ -8,166 +20,166 @@ function updatePlanName(title) {
   if (input) input.value = title;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
 
-  /* ── Register Modal (index.html) ── */
-  const registrationForm = document.getElementById('registrationForm');
-  if (registrationForm) {
-    registrationForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const btn = this.querySelector('button[type="submit"]');
-      if (btn) btn.disabled = true;
+/* ============================================================
+   2. HELPER — hap successModal me titull + mesazh dinamik
+   ============================================================ */
+function showSuccessModal(msg) {
 
-      fetch(this.action, {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-      })
-      .then(res => res.json())
-      .then(json => {
-        if (json.status === 'success') {
-          // Mbyll cilindo modal që është hapur
-          ['registerModal', 'planModal'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-              const instance = bootstrap.Modal.getInstance(el);
-              if (instance) instance.hide();
-            }
-          });
+  // Mbyll të gjitha modalet e hapura
+  document.querySelectorAll('.modal.show').forEach(function (el) {
+    const instance = bootstrap.Modal.getInstance(el);
+    if (instance) instance.hide();
+  });
 
-          const paketa = document.querySelector('input[name="paketa"]');
-          document.getElementById('successMsg').textContent = paketa && paketa.value
-            ? 'Regjistrimi për paketën "' + paketa.value + '" u krye me sukses! Do ju kontaktojmë së shpejti.'
-            : 'Regjistrimi u krye me sukses! Do ju kontaktojmë së shpejti.';
-
-          new bootstrap.Modal(document.getElementById('successModal')).show();
-          registrationForm.reset();
-        }
-      })
-      .catch(err => console.error(err))
-      .finally(() => { if (btn) btn.disabled = false; });
-    });
+  // Vendos titullin dinamik
+  const title = document.getElementById('successTitle');
+  if (title) {
+    const m = (msg || '').toLowerCase();
+    if (m.includes('review')) {
+      title.textContent = 'Review u Dërgua!';
+    } else if (m.includes('mesazh') || m.includes('kontakt')) {
+      title.textContent = 'Mesazhi u Dërgua!';
+    } else {
+      title.textContent = 'Regjistrimi u Krye!';
+    }
   }
 
-  /* ── Review Modal (index.html) ── */
-  const reviewForm = document.getElementById('reviewForm');
-  if (reviewForm) {
-    reviewForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const btn = this.querySelector('button[type="submit"]');
-      if (btn) btn.disabled = true;
+  // Vendos mesazhin
+  const msgEl = document.getElementById('successMsg');
+  if (msgEl) msgEl.textContent = msg || '';
 
-      fetch(this.action, {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-      })
-      .then(res => res.json())
-      .then(json => {
-        if (json.status === 'success') {
-          bootstrap.Modal.getInstance(document.getElementById('reviewModal')).hide();
-          document.getElementById('successMsg').textContent =
-            'Review-i juaj u dërgua! Do aprovohet nga admini së shpejti.';
-          new bootstrap.Modal(document.getElementById('successModal')).show();
-          reviewForm.reset();
-        }
-      })
-      .catch(err => console.error(err))
-      .finally(() => { if (btn) btn.disabled = false; });
-    });
-  }
+  // Hap successModal pas 400ms
+  setTimeout(function () {
+    const el = document.getElementById('successModal');
+    if (el) new bootstrap.Modal(el).show();
+  }, 400);
+}
 
-  /* ── Contact Footer ── */
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const btn = this.querySelector('button[type="submit"]');
-      if (btn) btn.disabled = true;
 
-      fetch(this.action, {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-      })
-      .then(res => res.json())
-      .then(json => {
-        if (json.status === 'success') {
-          new bootstrap.Modal(document.getElementById('contactSuccessModal')).show();
-          contactForm.reset();
-        }
-      })
-      .catch(err => console.error(err))
-      .finally(() => { if (btn) btn.disabled = false; });
-    });
-  }
-
-});
-
-// ============================================================
-// UNIVERSAL FORM HANDLER — hap successModal pas çdo submit
-// ============================================================
+/* ============================================================
+   3. UNIVERSAL FORM HANDLER
+   Trajton: #registerModal form, #planModal form,
+            #reviewModal form, #contactForm
+   ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
 
   function handleFormSubmit(form) {
+    if (form.dataset.handlerAttached) return;
+    form.dataset.handlerAttached = 'true';
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const formData = new FormData(form);
+      const btn = form.querySelector('button[type="submit"]');
+      const originalHTML = btn ? btn.innerHTML : null;
+
+      // Loading state
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Duke dërguar...';
+      }
+
       const action = form.getAttribute('action') || window.location.href;
 
       fetch(action, {
         method: 'POST',
-        body: formData,
+        body: new FormData(form),
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
       })
-      .then(res => res.json())
-      .then(data => {
+      .then(function (res) {
+        if (!res.ok) throw new Error('Server error: ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
         if (data.status === 'success') {
-          // 1. Mbyll të gjithë modalet e hapura
-          document.querySelectorAll('.modal.show').forEach(function (el) {
-            bootstrap.Modal.getInstance(el)?.hide();
-          });
-
-          // 2. Vendos mesazhin
-          var msg = document.getElementById('successMsg');
-          if (msg) msg.textContent = data.msg || 'Faleminderit! Do ju kontaktojmë së shpejti.';
-
-          // 3. Hap successModal
-          setTimeout(function () {
-            var el = document.getElementById('successModal');
-            if (el) new bootstrap.Modal(el).show();
-          }, 400);
-
+          showSuccessModal(data.msg);
           form.reset();
+        } else {
+          console.warn('Form error:', data.msg || 'E panjohur');
         }
       })
-      .catch(err => console.error('Fetch error:', err));
+      .catch(function (err) {
+        console.error('Fetch error:', err);
+      })
+      .finally(function () {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = originalHTML;
+        }
+      });
     });
   }
 
-  // ✅ Kap TË GJITHA format brenda çdo registerModal — me ose pa id
-  document.querySelectorAll('#registerModal form, #planModal form, #reviewModal form, #contactForm').forEach(handleFormSubmit);
+  document.querySelectorAll(
+    '#registerModal form, #planModal form, #reviewModal form, #contactForm'
+  ).forEach(handleFormSubmit);
 
-});
 
+  /* ============================================================
+     4. FAQ ACCORDION
+     ============================================================ */
+  document.querySelectorAll('.sp-faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const id     = this.getAttribute('data-fid');
+      const answer = document.getElementById(id);
+      if (!answer) return;
 
-// FAQ //
+      const isOpen = answer.classList.contains('open');
 
-document.querySelectorAll('.sp-faq-q').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    const id = this.getAttribute('data-fid');
-    const answer = document.getElementById(id);
-    const isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.sp-faq-a').forEach(function (a) { a.classList.remove('open'); });
+      document.querySelectorAll('.sp-faq-q').forEach(function (b) { b.classList.remove('active'); });
 
-    // Mbyll të gjitha
-    document.querySelectorAll('.sp-faq-a').forEach(a => a.classList.remove('open'));
-    document.querySelectorAll('.sp-faq-q').forEach(b => b.classList.remove('active'));
-
-    // Hap vetëm këtë nëse nuk ishte hapur
-    if (!isOpen) {
-      answer.classList.add('open');
-      this.classList.add('active');
-    }
+      if (!isOpen) {
+        answer.classList.add('open');
+        this.classList.add('active');
+      }
+    });
   });
+
+
+  /* ============================================================
+     5. NAVBAR SCROLL EFFECT
+     ============================================================ */
+  var navbar = document.querySelector('.navbar');
+  if (navbar) {
+    window.addEventListener('scroll', function () {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  }
+
 });
+
+/* ============================================================
+     STAR RATING — #reviewModal
+     Shto këtë bllok brenda DOMContentLoaded në fund të gym.js
+     ============================================================ */
+  const starBtns = document.querySelectorAll('#reviewModal .review-star-btn');
+  const ratingInput = document.getElementById('ratingValue');
+  if (starBtns.length && ratingInput) {
+    let currentRating = 5;
+
+    starBtns.forEach(function(btn) {
+      btn.addEventListener('mouseenter', function() {
+        const val = +this.dataset.val;
+        starBtns.forEach(function(b) {
+          b.classList.toggle('active', +b.dataset.val <= val);
+        });
+      });
+
+      btn.addEventListener('click', function() {
+        currentRating = +this.dataset.val;
+        ratingInput.value = currentRating;
+        starBtns.forEach(function(b) {
+          b.classList.toggle('active', +b.dataset.val <= currentRating);
+        });
+      });
+    });
+
+    document.querySelector('#reviewModal .review-stars-input')
+      .addEventListener('mouseleave', function() {
+        starBtns.forEach(function(b) {
+          b.classList.toggle('active', +b.dataset.val <= currentRating);
+        });
+      });
+  }

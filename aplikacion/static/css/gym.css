@@ -21,6 +21,7 @@
    17. MEMBERSHIP       → membership
    18. ORARET           → oraret
    19. KLASAT           → klasat
+   20. MOBILE FIXES     → të gjitha faqet
    ============================================================ */
 
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;900&display=swap");
@@ -40,7 +41,7 @@ body {
   font-family: 'Oswald', sans-serif;
   background-color: #000;
   color: #fff;
-  padding-top: 20px;
+  padding-top: 80px; /* FIX: ishte 20px — nuk mjaftonte për navbar fixed */
 }
 
 body, h1, h2, h3, h4, h5, h6, p, span, a {
@@ -76,8 +77,8 @@ body, h1, h2, h3, h4, h5, h6, p, span, a {
 .navbar-nav {
   display: flex;
   flex-direction: row;
-  margin-left: 20px !important;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
   gap: 30px;
   list-style: none;
   align-items: center;
@@ -135,10 +136,103 @@ body, h1, h2, h3, h4, h5, h6, p, span, a {
 
 .nav-item { background: transparent !important; border: none !important; }
 
-@media (max-width: 768px) {
-  .brand-logo { height: 50px; }
-  .brand-main  { font-size: 1.2rem; }
+@media (max-width: 991px) {
+  .brand-logo { height: 44px; }
+  .brand-main  { font-size: 1rem; }
+  .brand-sub   { font-size: 0.8rem; letter-spacing: 3px; }
+
+  /* Menu collapse */
+  .navbar-collapse {
+    background: #000;
+    padding: 20px 24px 28px;
+    border-top: 1px solid rgba(220, 53, 69, 0.15);
+    margin-top: 8px;
+  }
+
+  .navbar-nav {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item { width: 100%; }
+
+  .navbar-nav .nav-link {
+    padding: 14px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    font-size: 14px !important;
+    letter-spacing: 2px;
+    display: block;
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  .navbar-nav .nav-item:last-child .nav-link {
+    border-bottom: none !important;
+  }
 }
+
+
+/* ── Hamburgeri — fshihet në desktop ── */
+.navbar-toggler {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 8px !important;
+  width: 44px;
+  height: 44px;
+  display: none !important; /* i fshehur default */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+  background-image: none !important;
+  width: 24px;
+  height: 2px;
+  background-color: #fff !important;
+  display: block;
+  border-radius: 1px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 1px;
+  position: absolute;
+  left: 0;
+  transition: 0.3s;
+}
+
+.navbar-toggler-icon::before { top: -7px; }
+.navbar-toggler-icon::after  { top:  7px; }
+
+/* Shfaqet vetëm në mobile */
+@media (max-width: 991px) {
+  .navbar-toggler {
+    display: flex !important;
+  }
+}
+
 
 
 /* ============================================================
@@ -206,7 +300,8 @@ body, h1, h2, h3, h4, h5, h6, p, span, a {
 /* ============================================================
    4. MODALET — të gjitha faqet
    ============================================================ */
-/* ── Register Modal Premium ── */
+
+/* ── Register Modal ── */
 .register-modal-content {
   background: #0a0a0a;
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
@@ -412,6 +507,258 @@ body, h1, h2, h3, h4, h5, h6, p, span, a {
   box-shadow: 0 8px 25px rgba(220, 53, 69, 0.35);
 }
 
+/* ── Review Modal ── */
+.review-modal-content {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(220, 53, 69, 0.08);
+}
+
+.review-modal-header {
+  background: linear-gradient(135deg, #0d0d0d 0%, #111 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 32px 40px 28px;
+  position: relative;
+}
+
+.review-modal-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 40px;
+  width: 40px; height: 1px;
+  background: #dc3545;
+}
+
+.review-modal-eyebrow {
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: #dc3545;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-modal-eyebrow::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: #dc3545;
+}
+
+.review-modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.review-modal-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.3);
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+  line-height: 1;
+  padding: 4px;
+}
+
+.review-modal-close:hover {
+  color: #dc3545;
+  transform: scale(1.2);
+}
+
+.review-modal-body {
+  padding: 36px 40px 40px;
+  background: #0a0a0a;
+}
+
+/* Stars interaktive */
+.review-stars-input {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.review-star-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 28px;
+  color: #222;
+  transition: color 0.2s, transform 0.2s;
+  line-height: 1;
+}
+
+.review-star-btn:hover,
+.review-star-btn.active {
+  color: #ffc107;
+  transform: scale(1.15);
+}
+
+/* Select i stilizuar */
+.review-select {
+  background: #111 !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 6px !important;
+  color: #fff !important;
+  padding: 13px 16px !important;
+  font-size: 13px !important;
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23dc3545' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  font-family: 'Oswald', sans-serif !important;
+  letter-spacing: 0.5px;
+  transition: border-color 0.3s;
+}
+
+.review-select:focus {
+  border-color: rgba(220, 53, 69, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.08) !important;
+  outline: none;
+}
+
+.review-select option {
+  background: #111;
+  color: #fff;
+}
+
+.review-modal-footer {
+  padding: 0 40px 36px;
+  background: #0a0a0a;
+  border-top: none !important;
+  display: flex;
+  gap: 12px;
+}
+
+.review-submit-btn {
+  flex: 1;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 15px 32px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  font-family: 'Oswald', sans-serif;
+}
+
+.review-submit-btn:hover {
+  background: #b02030;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+}
+
+.review-cancel-btn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 15px 24px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: border-color 0.3s, color 0.3s;
+  font-family: 'Oswald', sans-serif;
+}
+
+.review-cancel-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Modal i Klasave (gym-modal) ── */
+.gym-modal-content {
+  background-color: #000 !important;
+  border: 1px solid #333;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.15);
+}
+
+.modal-img-container {
+  height: 100%;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.img-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #000 0%, transparent 70%);
+}
+
+.img-content-bottom {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 2;
+}
+
+.btn-close-custom {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+  z-index: 10;
+}
+
+.btn-close-custom:hover {
+  color: #dc3545;
+  transform: scale(1.2);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 20px 0;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #666;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+}
+
+
 /* ============================================================
    5. FOOTER — të gjitha faqet
    ============================================================ */
@@ -435,6 +782,15 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
   background-color: #d60000;
   transform: translateY(-5px);
   color: white;
+}
+
+.social-hover {
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-hover:hover {
+  color: #dc3545 !important;
+  transform: translateY(-4px);
 }
 
 .insta-box {
@@ -652,150 +1008,6 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
   text-transform: uppercase;
 }
 
-/* ── Paketa e Rekomanduar ── */
-.mbr-column-featured {
-  position: relative;
-}
-
-.mbr-card-featured {
-  border-color: #dc3545 !important;
-  box-shadow: 0 0 40px rgba(220, 53, 69, 0.15);
-}
-
-.mbr-featured-badge {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #dc3545;
-  color: #fff;
-  font-size: 9px;
-  letter-spacing: 3px;
-  font-weight: 700;
-  padding: 5px 18px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  z-index: 2;
-}
-
-
-/* ── Timeline ── */
-.mbr-timeline-section {
-  background: #050505;
-  padding: 90px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.mbr-timeline-eyebrow {
-  display: inline-block;
-  font-size: 10px;
-  letter-spacing: 5px;
-  color: #dc3545;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.mbr-timeline-title {
-  font-size: clamp(32px, 4vw, 56px);
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.mbr-timeline-title em {
-  font-style: normal;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(220, 53, 69, 0.7);
-}
-
-.mbr-timeline {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin-top: 60px;
-  position: relative;
-}
-
-.mbr-timeline-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 24px;
-  position: relative;
-}
-
-.mbr-timeline-num {
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: #dc3545;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.mbr-timeline-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, #dc3545, rgba(220, 53, 69, 0.1));
-  margin-bottom: 32px;
-  position: relative;
-}
-
-.mbr-timeline-line::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  background: #dc3545;
-  border-radius: 50%;
-}
-
-.mbr-timeline-line.last {
-  background: transparent;
-}
-
-.mbr-timeline-icon {
-  font-size: 22px;
-  color: #dc3545;
-  margin-bottom: 16px;
-  opacity: 0.8;
-}
-
-.mbr-timeline-content h5 {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
-
-.mbr-timeline-content p {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.3);
-  line-height: 1.8;
-  font-weight: 300;
-}
-
-@media (max-width: 768px) {
-  .mbr-timeline {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .mbr-timeline-line {
-    width: 1px;
-    height: 30px;
-    background: linear-gradient(to bottom, #dc3545, transparent);
-    margin: 0 auto 20px;
-  }
-}
 
 /* ============================================================
    9. SP SECTIONS — about, membership, oraret, klasat
@@ -1387,7 +1599,7 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
 .cta-secondary-link:hover { color: #fff; }
 
 @media (max-width: 768px) {
-  .cta-inner { flex-direction: column; gap: 40px; }
+  .cta-inner { flex-direction: column; gap: 40px; padding: 0 20px; }
   .cta-divider { width: 60px; height: 1px; }
 }
 
@@ -1773,6 +1985,17 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
 /* ============================================================
    16. ABOUT — vetem about.html
    ============================================================ */
+.sp-mc-label {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Oswald', sans-serif;
+}
+
 .sp-mission-box {
   border: 1px solid #1a1a1a;
   border-top: 2px solid #dc3545;
@@ -2033,7 +2256,7 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
 }
 
 .sp-faq-q:hover,
-.sp-faq-q.open { color: #fff; }
+.sp-faq-q.active { color: #fff; }
 
 .sp-faq-icon {
   width: 16px; height: 16px;
@@ -2043,7 +2266,7 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
   transition: border-color 0.2s, background 0.2s;
 }
 
-.sp-faq-q.open .sp-faq-icon {
+.sp-faq-q.active .sp-faq-icon {
   border-color: #dc3545;
   background: #dc3545;
 }
@@ -2067,7 +2290,7 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
   transition: transform 0.2s, opacity 0.2s;
 }
 
-.sp-faq-q.open .sp-faq-icon::after {
+.sp-faq-q.active .sp-faq-icon::after {
   transform: translate(-50%, -50%) rotate(90deg);
   opacity: 0;
 }
@@ -2212,6 +2435,30 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
   border-bottom: 2px solid #e50914;
 }
 
+/* ── Paketa e Rekomanduar ── */
+.mbr-column-featured { position: relative; }
+
+.mbr-card-featured {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 40px rgba(220, 53, 69, 0.15);
+}
+
+.mbr-featured-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #dc3545;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  padding: 5px 18px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 2;
+}
+
 .membership-hero {
   max-width: 750px;
   margin: 0 auto 70px;
@@ -2235,6 +2482,121 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
   color: #a0a0a0;
   font-size: 16px;
   line-height: 1.7;
+}
+
+/* ── Timeline ── */
+.mbr-timeline-section {
+  background: #050505;
+  padding: 90px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mbr-timeline-eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: #dc3545;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.mbr-timeline-title {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.mbr-timeline-title em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(220, 53, 69, 0.7);
+}
+
+.mbr-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 60px;
+  position: relative;
+}
+
+.mbr-timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+  position: relative;
+}
+
+.mbr-timeline-num {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #dc3545;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.mbr-timeline-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, #dc3545, rgba(220, 53, 69, 0.1));
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.mbr-timeline-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #dc3545;
+  border-radius: 50%;
+}
+
+.mbr-timeline-line.last { background: transparent; }
+
+.mbr-timeline-icon {
+  font-size: 22px;
+  color: #dc3545;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.mbr-timeline-content h5 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.mbr-timeline-content p {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .mbr-timeline {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .mbr-timeline-line {
+    width: 1px;
+    height: 30px;
+    background: linear-gradient(to bottom, #dc3545, transparent);
+    margin: 0 auto 20px;
+  }
 }
 
 
@@ -2303,146 +2665,61 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
 /* ============================================================
    19. KLASAT — vetem klasat.html
    ============================================================ */
-/* wrapper i fotos */
-.creative-img-wrapper{
-    position:relative;
-    overflow:hidden;
-    border-radius:8px;
+.creative-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
-/* foto */
-.main-class-img{
-    width:100%;
-    height:440px;
-    object-fit:cover;
-    transform:scale(1);
-    filter:brightness(.8) contrast(1.1);
-    transition:transform .9s ease, filter .6s ease;
+.main-class-img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  transform: scale(1);
+  filter: brightness(.8) contrast(1.1);
+  transition: transform .9s ease, filter .6s ease;
 }
 
-/* zoom cinematic */
-.creative-img-wrapper:hover .main-class-img{
-    transform:scale(1.12);
-    filter:brightness(1);
+.creative-img-wrapper:hover .main-class-img {
+  transform: scale(1.12);
+  filter: brightness(1);
 }
 
-/* gradient overlay cinematic */
-.creative-img-wrapper::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,.8) 0%,
-        rgba(0,0,0,.3) 40%,
-        transparent 70%
-    );
-    pointer-events:none;
+.creative-img-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.3) 40%, transparent 70%);
+  pointer-events: none;
 }
 
-/* red accent border */
-.img-accent-border{
-    position:absolute;
-    inset:0;
-    border:2px solid rgba(220,53,69,.0);
-    transition:.45s;
+.img-accent-border {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(220,53,69,.0);
+  transition: .45s;
 }
 
-.creative-img-wrapper:hover .img-accent-border{
-    border-color:#dc3545;
-    box-shadow:0 0 40px rgba(220,53,69,.35);
+.creative-img-wrapper:hover .img-accent-border {
+  border-color: #dc3545;
+  box-shadow: 0 0 40px rgba(220,53,69,.35);
 }
 
-/* title */
-.creative-text-box h2{
-    letter-spacing:1px;
+.creative-text-box h2 { letter-spacing: 1px; }
+
+.red-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #dc3545, transparent);
 }
 
-/* divider */
-.red-divider{
-    width:80px;
-    height:3px;
-    background:linear-gradient(90deg,#dc3545,transparent);
+.italic-description {
+  font-style: italic;
+  color: rgba(255,255,255,.75);
+  border-left: 3px solid #dc3545;
+  padding-left: 15px;
 }
 
-/* italic quote */
-.italic-description{
-    font-style:italic;
-    color:rgba(255,255,255,.75);
-    border-left:3px solid #dc3545;
-    padding-left:15px;
-}
-
-/* buttons */
-.creative-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:14px 30px;
-    background:#dc3545;
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-    letter-spacing:1px;
-    border:none;
-    transition:.35s;
-    position:relative;
-    overflow:hidden;
-}
-
-/* glow hover */
-.creative-btn:hover{
-    background:#b02a37;
-    transform:translateY(-3px);
-    box-shadow:0 8px 25px rgba(220,53,69,.45);
-}
-
-/* outline button */
-.creative-btn.btn-outline{
-    background:transparent;
-    border:1px solid #dc3545;
-}
-
-.creative-btn.btn-outline:hover{
-    background:#dc3545;
-}
-
-/* modal */
-.gym-modal-content{
-    background:#000;
-}
-
-/* modal tag */
-.gym-tag{
-    border-radius:4px;
-    font-weight:500;
-    transition:.25s;
-}
-
-.gym-tag:hover{
-    background:#111;
-    transform:translateY(-2px);
-}
-
-/* scroll modal */
-.modal-text-content{
-    scrollbar-width:thin;
-}
-
-/* responsive */
-@media (max-width:768px){
-
-.main-class-img{
-    height:300px;
-}
-
-.creative-text-box{
-    padding:0;
-}
-
-}
-
-   
 .creative-btn {
   display: inline-flex;
   align-items: center;
@@ -2462,172 +2739,159 @@ footer .form-control::placeholder { color: rgba(255,255,255,0.4); font-size: 0.8
 .creative-btn:hover {
   background: #dc3545;
   color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(220,53,69,.45);
 }
 
-/* MODALI */
-.gym-modal-content {
-    background-color: #000 !important;
-    border: 1px solid #333;
-    border-radius: 0; /* Më agresive pa cepa të rrumbullakosur */
-    overflow: hidden;
-    box-shadow: 0 0 50px rgba(255, 0, 0, 0.15);
+.creative-btn.btn-outline {
+  background: transparent;
+  border: 1px solid #dc3545;
 }
 
-/* Imazhi në të majtë */
-.modal-img-container {
-    height: 100%;
-    min-height: 500px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
+.creative-btn.btn-outline:hover { background: #dc3545; }
 
-.img-overlay-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, #000 0%, transparent 70%);
-}
-
-.img-content-bottom {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    z-index: 2;
-}
-/* Butoni close për modal */
-.btn-close-custom {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 26px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.25s;
-    z-index: 10;
-}
-
-.btn-close-custom:hover {
-    color: #dc3545;
-    transform: scale(1.2);
-}
-/* Grid-i i statistikave */
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
-    padding: 20px 0;
-}
-
-.stat-label {
-    font-size: 0.7rem;
-    color: #666;
-    letter-spacing: 2px;
-    font-weight: 800;
-}
-
-.stat-value {
-    font-size: 1.2rem;
-    font-weight: bold;
-    display: block;
-}
-
-/* Stilimi i pikave që vijnë nga Textfield me Enter */
 .gym-tag {
-    background: #111;
-    border: 1px solid #222;
-    color: #fff;
-    padding: 10px 18px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    transition: 0.3s;
-    flex: 1 0 45%; /* I ndan në dy kolona nëse ka hapësirë */
+  background: #111;
+  border: 1px solid #222;
+  color: #fff;
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  flex: 1 0 45%;
+  border-radius: 4px;
 }
 
 .gym-tag:hover {
-    border-color: #ff0000;
-    background: #050505;
+  border-color: #ff0000;
+  background: #050505;
+  transform: translateY(-2px);
 }
 
-.modal-img-container {
-    height: 100%;
-    min-height: 600px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
+.modal-text-content { scrollbar-width: thin; }
 
 .text-light-50 {
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
 }
 
-/* Tipografia */
 .ls-2 { letter-spacing: 2px; }
-.text-light-50 { color: rgba(255, 255, 255, 0.6); }
 
-.practical-info {
-    background: rgba(255, 255, 255, 0.03) !important;
-    font-family: 'Inter', sans-serif;
+.target-section {
+  background: transparent !important;
+  border-left: 2px solid #dc3545 !important;
+  padding: 14px 18px !important;
+  margin-bottom: 20px !important;
 }
 
-.practical-info i {
-    width: 20px;
+.target-section h6 { font-size: 11px; letter-spacing: 1px; margin-bottom: 10px !important; }
+.target-section .fs-5 { font-size: 14px !important; font-weight: 600; }
+.target-section small, .target-section .text-light-50 { font-size: 11px; }
+.target-section .col-6 span { font-size: 13px; }
+.target-section .row { margin-top: 8px !important; }
+.target-section .mb-4 { margin-bottom: 8px !important; }
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #666;
+  letter-spacing: 2px;
+  font-weight: 800;
 }
 
-.booking-status .progress {
-    border-radius: 0;
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
 }
 
-.booking-status .progress-bar {
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+.practical-info { background: rgba(255, 255, 255, 0.03) !important; }
+.practical-info i { width: 20px; }
+.booking-status .progress { border-radius: 0; }
+.booking-status .progress-bar { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+
+@media (max-width: 768px) {
+  .main-class-img { height: 300px; }
+  .creative-text-box { padding: 0; }
 }
 
-/* target -section */
-/* ===== Target Section Minimal ===== */
 
-.target-section{
-    background:transparent !important;
-    border-left:2px solid #dc3545 !important;
-    padding:14px 18px !important;
-    margin-bottom:20px !important;
+/* ============================================================
+   20. MOBILE FIXES — të gjitha faqet
+   ============================================================ */
+
+/* Parandalon scroll horizontal */
+html, body { overflow-x: hidden; }
+
+/* FIX: "TONA" duhet outline jo solid — Bootstrap mbishkruan color te em */
+.page-header-title em {
+  font-style: normal !important;
+  color: transparent !important;
+  -webkit-text-stroke: 1px rgba(220, 53, 69, 0.7) !important;
 }
 
-/* title */
-.target-section h6{
-    font-size:11px;
-    letter-spacing:1px;
-    margin-bottom:10px !important;
+@media (max-width: 991px) {
+  /* Hapësira e navbar — zvogëlohet pak */
+  body { padding-top: 70px; }
 }
 
-/* target group */
-.target-section .fs-5{
-    font-size:14px !important;
-    font-weight:600;
+@media (max-width: 768px) {
+
+  body { padding-top: 65px; }
+
+  /* Page header */
+  .page-header { padding: 70px 20px 28px; }
+  .page-header-title { font-size: clamp(26px, 8vw, 44px); letter-spacing: -1px; }
+
+  /* SP Sections */
+  .sp-section { padding: 50px 20px; }
+  .sp-counter-n { font-size: 32px; }
+
+  /* Foto e klasës — 100% gjerësi */
+  .creative-img-wrapper { border-radius: 0; width: 100%; }
+  .main-class-img { height: 280px; width: 100%; }
+
+  /* Butonat */
+  .creative-btn { width: auto; padding: 12px 24px; font-size: 10px; }
+
+  /* Membership */
+  .mbr-column { min-width: 100%; }
+  .hero-membership-title { font-size: 36px; }
+
+  /* Reviews */
+  .reviews-track { grid-template-columns: 1fr; }
+
+  /* Mosaic */
+  .sp-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 200px);
+  }
+  .sp-mc-a, .sp-mc-d {
+    grid-row: span 1;
+    grid-column: span 1;
+  }
+
+  /* Të tjera */
+  .sp-transforms-grid { grid-template-columns: 1fr; }
+  .sp-faq-grid { grid-template-columns: 1fr; gap: 30px; }
+  .idx-classes-grid { grid-template-columns: 1fr; }
+  .register-modal-form { padding: 32px 24px; }
+  .mbr-timeline { grid-template-columns: 1fr; }
+  .why-cards-wrapper { grid-template-columns: 1fr; }
 }
 
-/* labels */
-.target-section small,
-.target-section .text-light-50{
-    font-size:11px;
-}
-
-/* stats */
-.target-section .col-6 span{
-    font-size:13px;
-}
-
-/* spacing */
-.target-section .row{
-    margin-top:8px !important;
-}
-
-.target-section .mb-4{
-    margin-bottom:8px !important;
+@media (max-width: 480px) {
+  body { padding-top: 60px; }
+  .sp-section { padding: 40px 16px; }
+  .page-header { padding: 70px 16px 20px; }
+  .page-header-title { font-size: clamp(22px, 9vw, 36px); }
+  .btn-neon { padding: 14px 28px; font-size: 0.9rem; }
+  .sp-counter-n { font-size: 26px; }
+  .why-cards-wrapper { padding: 0 16px; }
+  .hero-membership-title { font-size: 28px; }
+  .register-modal-form { padding: 24px 16px; }
+  .success-modal-body { padding: 24px 20px 32px; }
+  .main-class-img { height: 240px; }
 }

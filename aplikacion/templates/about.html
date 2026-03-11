@@ -104,19 +104,17 @@
 <section class="sp-section">
   <div class="sp-label"><span>Ambientet Tona</span></div>
   <h2 class="sp-heading">Shiko <em>Hapësirën</em></h2>
+
   <div class="sp-mosaic">
-    <div class="sp-mc-cell sp-mc-a" data-src="{% static 'images/place1.png' %}" data-idx="0">
-      <img src="{% static 'images/place1.png' %}" alt=""><span class="sp-mc-num">01</span>
+    {% for ambient in ambientet %}
+    <div class="sp-mc-cell sp-mc-{{ forloop.counter }}"
+         data-src="{{ ambient.foto.url }}"
+         data-idx="{{ forloop.counter0 }}">
+      <img src="{{ ambient.foto.url }}" alt="{{ ambient.pershkrim }}">
+      <span class="sp-mc-num">{{ forloop.counter|stringformat:"02d" }}</span>
+      <div class="sp-mc-label">{{ ambient.pershkrim }}</div>
     </div>
-    <div class="sp-mc-cell sp-mc-b" data-src="{% static 'images/background2.png' %}" data-idx="1">
-      <img src="{% static 'images/background2.png' %}" alt=""><span class="sp-mc-num">02</span>
-    </div>
-    <div class="sp-mc-cell sp-mc-c" data-src="{% static 'images/gym4.jpg' %}" data-idx="2">
-      <img src="{% static 'images/gym4.jpg' %}" alt=""><span class="sp-mc-num">03</span>
-    </div>
-    <div class="sp-mc-cell sp-mc-d" data-src="{% static 'images/gym5.jpg' %}" data-idx="3">
-      <img src="{% static 'images/gym5.jpg' %}" alt=""><span class="sp-mc-num">04</span>
-    </div>
+    {% endfor %}
   </div>
 </section>
 

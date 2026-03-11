@@ -245,35 +245,55 @@
 
 <!-- MODALET -->
 <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content bg-dark text-white border-secondary">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content review-modal-content">
+
       <form id="reviewForm" action="{% url 'index' %}" method="POST">
         {% csrf_token %}
         <input type="hidden" name="form_type" value="review">
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Emri juaj</label>
-            <input type="text" name="emri" class="form-control bg-secondary text-white border-0" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Komenti</label>
-            <textarea name="komenti" class="form-control bg-secondary text-white border-0" rows="3" required></textarea>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Vlerësimi (1-5)</label>
-            <select name="rating" class="form-select">
-              <option value="5">5 ★ (Shkëlqyeshëm)</option>
-              <option value="4">4 ★ (Shumë mirë)</option>
-              <option value="3">3 ★ (Mirë)</option>
-              <option value="2">2 ★ (Mjaftueshëm)</option>
-              <option value="1">1 ★ (Dobët)</option>
-            </select>
-          </div>
+
+        <!-- Header -->
+        <div class="review-modal-header">
+          <div class="review-modal-eyebrow">Lini mendimin tuaj</div>
+          <h5 class="review-modal-title">Shkruani një Review</h5>
+          <button type="button" class="review-modal-close" data-bs-dismiss="modal">×</button>
         </div>
-        <div class="modal-footer border-secondary">
-          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Anulo</button>
-          <button type="submit" class="btn btn-danger">Dërgo Review</button>
+
+        <!-- Body -->
+        <div class="review-modal-body">
+
+          <!-- Stars interaktive -->
+          <div class="review-stars-input">
+            <button type="button" class="review-star-btn active" data-val="1">★</button>
+            <button type="button" class="review-star-btn active" data-val="2">★</button>
+            <button type="button" class="review-star-btn active" data-val="3">★</button>
+            <button type="button" class="review-star-btn active" data-val="4">★</button>
+            <button type="button" class="review-star-btn active" data-val="5">★</button>
+          </div>
+          <input type="hidden" name="rating" id="ratingValue" value="5">
+
+          <!-- Emri -->
+          <div class="register-field-group">
+            <label class="register-label">Emri juaj</label>
+            <input type="text" name="emri" class="register-input" placeholder="p.sh. Andi Kelmendi" required>
+          </div>
+
+          <!-- Komenti -->
+          <div class="register-field-group" style="margin-bottom:0;">
+            <label class="register-label">Komenti</label>
+            <textarea name="komenti" class="register-input" rows="4"
+              placeholder="Ndani përvojën tuaj..." required
+              style="resize:none;"></textarea>
+          </div>
+
         </div>
+
+        <!-- Footer -->
+        <div class="review-modal-footer">
+          <button type="button" class="review-cancel-btn" data-bs-dismiss="modal">Anulo</button>
+          <button type="submit" class="review-submit-btn">Dërgo Review</button>
+        </div>
+
       </form>
     </div>
   </div>
@@ -348,27 +368,5 @@
   </div>
 </div>
 
-{% comment %} <div class="modal fade" id="successModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content success-modal-content">
-      <div class="success-modal-top">
-        <div class="success-icon-wrap">
-          <div class="success-icon-ring"></div>
-          <i class="fas fa-check success-icon"></i>
-        </div>
-      </div>
-      <div class="success-modal-body">
-        <span style="font-size:9px; letter-spacing:5px; color:#dc3545; text-transform:uppercase; font-weight:600;">Fusion Gym</span>
-        <h4 class="text-white fw-bold mt-2 mb-0" style="font-size:1.6rem; letter-spacing:-0.5px;">Regjistrimi u Krye!</h4>
-        <div style="width:30px; height:1px; background:#dc3545; margin:12px auto;"></div>
-        <p id="successMsg" style="font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:1px; line-height:1.8;"></p>
-        <button class="success-modal-btn" data-bs-dismiss="modal">
-          <span>Vazhdo</span>
-          <i class="fas fa-arrow-right ms-2"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</div> {% endcomment %}
 
 {% endblock %}

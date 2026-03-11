@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Fusion Gym{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{% static 'css/gym.css' %}">
     <link rel='icon' href="{% static 'images/FusionLogo2.png' %}">
 </head>
@@ -21,7 +22,7 @@
 
     {% include 'footer.html' %}
 
-    <!-- Success Modal — të gjitha faqet -->
+    <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content success-modal-content">
@@ -33,7 +34,7 @@
           </div>
           <div class="success-modal-body">
             <span style="font-size:9px; letter-spacing:5px; color:#dc3545; text-transform:uppercase; font-weight:600;">Fusion Gym</span>
-            <h4 class="text-white fw-bold mt-2 mb-0" style="font-size:1.6rem; letter-spacing:-0.5px;">Regjistrimi u Krye!</h4>
+            <h4 id="successTitle" class="text-white fw-bold mt-2 mb-0" style="font-size:1.6rem; letter-spacing:-0.5px;">Regjistrimi u Krye!</h4>
             <div style="width:30px; height:1px; background:#dc3545; margin:12px auto;"></div>
             <p id="successMsg" style="font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:1px; line-height:1.8;"></p>
             <button class="success-modal-btn" data-bs-dismiss="modal">
